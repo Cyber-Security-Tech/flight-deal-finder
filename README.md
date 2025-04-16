@@ -1,74 +1,96 @@
 # ✈️ Flight Deal Finder
 
-A real-world Python project that scans live flight deals using the Amadeus API, checks them against your personal budget, and sends email alerts if prices drop below your threshold. This project integrates Google Sheets (via Sheety API) as a lightweight backend for destinations, supports both real and demo modes, and is structured to showcase clean, production-quality code.
+A real-world Python automation project that scans live flight prices using the Amadeus API, checks them against user-defined budgets, and sends email alerts if prices drop below the threshold. Google Sheets (via the Sheety API) serves as a lightweight backend for managing destination data.
+
+The project supports **DEMO MODE** so recruiters can test the functionality **without any setup or API keys**. Code is modular, clean, and structured for production-level readability.
+
+---
 
 ## 🚀 Demo Mode Included
 
-Recruiters or reviewers can run the app **without needing API keys or setup** by enabling demo mode in `main.py`:
+Recruiters or reviewers can run the app **without setting up any API keys** by enabling demo mode in `main.py`:
 
 ```python
 DEMO_MODE = True
 ```
 
-This prints a realistic mock flight deal with no external API calls.
+This will print a realistic mock flight deal with no external dependencies.
+
+> ✅ Perfect for showcasing the project without any setup friction.
+
+---
+
+## 🖥️ Screenshot
+
+![Demo Output](media/screenshots/demo_output.png)
 
 ---
 
 ## 🔧 Features
 
-- ✅ Real-time flight searches via Amadeus API
-- ✅ Automated price comparison to user-defined thresholds
-- ✅ Email alerts for deals below budget
-- ✅ Google Sheets integration via Sheety for backend data storage
-- ✅ Demo mode for easy testing (no API required)
-- ✅ Secure `.env` usage with `.env.example` provided
-- ✅ Clean, modular Python codebase for easy extension
+- ✅ Real-time flight search via Amadeus API
+- ✅ Automated price comparison to user-defined max prices
+- ✅ Email alerts for budget-friendly flight deals
+- ✅ Google Sheets integration (Sheety API)
+- ✅ DEMO_MODE for easy review/testing
+- ✅ Secure use of `.env` file for credentials
+- ✅ Clean, modular Python architecture
+
+---
+
+## 🛠 Tech Stack
+
+- **Language:** Python 3  
+- **APIs:** Amadeus Flights API, Sheety API (Google Sheets)  
+- **Email:** Gmail SMTP (via `smtplib`)  
+- **Environment Variables:** Managed with `python-dotenv`  
+- **Dependency Management:** `requirements.txt`  
+- **Architecture:** OOP, modular scripts per concern
 
 ---
 
 ## 📂 Project Structure
 
 ```
-flight_deal_finder/
+flight-deal-finder/
 │
-├── main.py                  # Entry point with demo mode toggle
-├── flight_data.py           # FlightData class to store flight info
-├── flight_search.py         # Logic to search for flights via Amadeus
-├── data_manager.py          # Reads/writes to Google Sheet via Sheety
-├── notification_manager.py  # Sends email alerts
-├── .env.example             # Example of required environment variables
-├── .gitignore               # Ensures .env and compiled files are excluded
-└── requirements.txt         # Python dependencies
+├── main.py                  # App entry point – includes DEMO_MODE
+├── flight_data.py           # Data class for storing flight info
+├── flight_search.py         # Searches for flights via Amadeus API
+├── data_manager.py          # Reads/writes to Google Sheets (Sheety)
+├── notification_manager.py  # Sends deal alerts via email
+├── .env.example             # Template for environment variables
+├── .gitignore               # Ignores .env, __pycache__, etc.
+├── requirements.txt         # Python dependencies
+└── media/screenshots/       # Demo screenshot folder
 ```
 
 ---
 
 ## 🔒 Environment Variables
 
-Create a `.env` file with the following keys:
+Create a `.env` file using `.env.example` as a reference:
 
-```
+```env
 SHEET_ENDPOINT=https://api.sheety.co/YOUR_ENDPOINT_HERE
-AMADEUS_CLIENT_ID=your_amadeus_client_id
-AMADEUS_CLIENT_SECRET=your_amadeus_client_secret
-MY_EMAIL=youremail@gmail.com
-MY_EMAIL_PASSWORD=your_email_app_password
+AMADEUS_CLIENT_ID=YOUR_AMADEUS_CLIENT_ID
+AMADEUS_CLIENT_SECRET=YOUR_AMADEUS_CLIENT_SECRET
+MY_EMAIL=YOUR_EMAIL_ADDRESS@gmail.com
+MY_EMAIL_PASSWORD=YOUR_APP_PASSWORD
 ```
-
-Use `.env.example` as a template.
 
 ---
 
 ## 📧 Email Alerts
 
-When a cheap flight is found, you’ll receive an email like this:
+When a cheap flight is found, the email alert looks like this:
 
 ```
-Subject: Low price alert! Only $199 to Paris
+Subject: ✈️ Low price alert! Only $199 to Paris
 
 Cheap flight found!
 
-IAD (IAD) -> Paris (CDG)
+IAD (IAD) → Paris (CDG)
 Price: $199
 Departure: 2025-06-01 | Return: 2025-06-08
 ```
@@ -77,16 +99,20 @@ Departure: 2025-06-01 | Return: 2025-06-08
 
 ## 🧪 How to Run
 
-1. Clone the repo
-2. Install dependencies:
+1. Clone the repository:
+```bash
+git clone https://github.com/Cyber-Security-Tech/flight-deal-finder.git
+cd flight-deal-finder
+```
 
+2. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Add your `.env` file (or leave DEMO_MODE on)
-4. Run the script:
+3. Add a `.env` file with your API credentials (or leave `DEMO_MODE = True`)
 
+4. Run the app:
 ```bash
 python main.py
 ```
@@ -95,26 +121,31 @@ python main.py
 
 ## 💡 What I Learned
 
-- Real-world API usage and error handling with Amadeus and Sheety
-- Working with `.env` securely and professionally
-- Building automated tools that interact with online data and send alerts
-- Designing code that's both functional and recruiter-friendly
+- Integrating multiple APIs (Amadeus, Sheety)
+- Structuring Python projects with clean OOP patterns
+- Using environment variables securely
+- Building lightweight automation with real-world use cases
+- Making portfolio-ready projects that are also recruiter-friendly
+
+---
+
+## 🔮 Future Improvements
+
+- Add user input support for selecting origin cities
+- Schedule automatic daily scans and notifications
+- Export found deals to a CSV or Google Sheet log
+- Support multiple users with personalized flight preferences
+- Add SMS alerts via Twilio or Telegram
 
 ---
 
 ## 👀 Why This Project Matters
 
-This project shows not just coding ability, but also:
+This project shows more than just Python knowledge:
 
-- ✅ Real-world use cases
-- ✅ Security best practices
-- ✅ API integration experience
-- ✅ Automation and alert systems
+- ✅ Real-world API integration
+- ✅ Automated systems & alert logic
+- ✅ Secure architecture and clean code
+- ✅ Practical utility beyond tutorials
 
-It demonstrates the ability to go **beyond tutorials** and build something polished, useful, and extendable.
-
----
-
-## 🤝 Let's Connect
-
-If you're a recruiter or hiring manager interested in practical Python projects, feel free to connect with me! I'd love to bring these skills to your team.
+It’s designed to **demonstrate professional software practices** while remaining easy for recruiters and reviewers to test.
