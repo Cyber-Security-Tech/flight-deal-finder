@@ -1,5 +1,8 @@
 # ✈️ Flight Deal Finder
 
+> ⚡ Looking for the web app version?  
+> Check out the full-stack version here: [Flight Deal Finder Web 🌐](https://github.com/Cyber-Security-Tech/flight-deal-finder-web)
+
 A real-world Python automation project that scans live flight prices using the Amadeus API, checks them against user-defined budgets, and sends email alerts if prices drop below the threshold. Google Sheets (via the Sheety API) serves as a lightweight backend for managing destination data.
 
 The project supports **DEMO MODE** so recruiters can test the functionality **without any setup or API keys**. Code is modular, clean, and structured for production-level readability.
